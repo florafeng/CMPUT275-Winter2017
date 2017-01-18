@@ -1,0 +1,4 @@
+3
+PR PP RR SP
+PR RP RR SP SS PR
+SS
