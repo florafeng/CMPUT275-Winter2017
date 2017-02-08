@@ -1,0 +1,42 @@
+import sys
+"""
+Due to budget cuts there are restrictions on the number of different
+letters that are being allowed in phrases.  A list of "bad" letters
+has been developed, consisting of the 6 least frequent letters in 
+English, that is "vkjxqz".
+
+A phrase is allowed to use at most 4 of the letters from the bad set,
+ignoring case. If it does, it is classified as a bad phrase, and called
+a "badgram". If it uses 4 or less, is classified as an OK phrase.
+
+So for example:
+    A quick fox jogs.
+is ok, while
+    Vick the quizmaster just left.
+is not.
+
+Write a script called badgram.py that reads a sequence of lines and outputs 
+for each of the lines in the input whether the line is a badgram or not. For 
+each input line, your program should produce a new line containing "BAD" if 
+the input line is a badgram, otherwise it should produce a line
+containing "OK".  Blank lines are simply ignored.
+
+Input
+
+The input consists of blank lines, or of lines containing some characters.
+Blank input lines are to be IGNORED, and generate no output.
+
+For example:
+A quick fox jogs.
+
+Vick the quizmaster just left.
+
+Output
+
+For each non-blank input line there should be an output line containing 
+either "BAD" or "OK".
+
+Output for example input above:
+
+OK
+BAD
