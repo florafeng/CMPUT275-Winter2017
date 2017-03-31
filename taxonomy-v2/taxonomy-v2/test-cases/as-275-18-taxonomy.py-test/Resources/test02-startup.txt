@@ -1,0 +1,1 @@
+('Does it have shoes?', [('Can you put a saddle on it?', [('Does it have fur?', [('horse', []), ('bike', [])]), ('Does it moo?', [('cow', []), ('human', [])])]), ('Does it have hair?', [('human', []), ('dog', [])])])

@@ -1,0 +1,18 @@
+''
+0 0 0
+'a'
+1 1 0
+'aaaa'
+1 4 0
+'aabb'
+2 4 4
+'abcdefghijklmnop'
+16 16 64
+'abcdabcdefghabcdefghijklmnopabcdefghijklmnop'
+16 44 176
+'aaaaaaaaaaaaaaaaaaaaaaaaaaaaabcdefghijklmnop'
+16 44 103
+'banana'
+3 6 9
+'the state mississippi'
+9 21 63

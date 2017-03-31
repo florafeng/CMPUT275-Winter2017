@@ -1,0 +1,10 @@
+Continue description? [y|n]
+What thing do you want to describe?
+The unique instance of horse is determined by:
+['Does it have shoes?', 'y']
+['Can you put a saddle on it?', 'y']
+['Does it have fur?', 'y']
+Continue description? [y|n]
+What thing do you want to describe?
+There is no bird in the tree.
+Continue description? [y|n]

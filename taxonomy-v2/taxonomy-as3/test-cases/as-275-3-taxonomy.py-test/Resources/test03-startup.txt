@@ -1,0 +1,1 @@
+['D', 'Does it have shoes?', ['D', 'Can you put a saddle on it?', ['D', 'Does it have fur?', [ 'I', 'horse' ], [ 'I', 'bike' ] ], ['D', 'Does it moo?', ['I', 'cow' ], [ 'I', 'human' ] ] ], ['D', 'Does it have hair?', [ 'I', 'human' ], [ 'I', 'dog' ] ] ]

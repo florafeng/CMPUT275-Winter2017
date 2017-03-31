@@ -1,0 +1,14 @@
+digraph structure {
+ordering=out;
+node [height=.1];
+rankdir=TB;
+4321333448 [shape=record, height=.1, label="{ \<class 'list'\> | { <f0> 0\n'(' | <f1> 1\n* | <f2> 2\n'\|' | <f3> 3\n* | <f4> 4\n')' } }"];
+4321333576 [shape=record, height=.1, label="{ \<class 'list'\> | { <f0> 0\n'(' | <f1> 1\n* | <f2> 2\n'&' | <f3> 3\n* | <f4> 4\n')' } }"];
+4321333640 [shape=record, height=.1, label="{ \<class 'list'\> | { <f0> 0\n'x' } }"];
+4321333704 [shape=record, height=.1, label="{ \<class 'list'\> | { <f0> 0\n'y' } }"];
+4321333512 [shape=record, height=.1, label="{ \<class 'list'\> | { <f0> 0\n'z' } }"];
+4321333448:<f1> -> 4321333576;
+4321333576:<f1> -> 4321333640;
+4321333576:<f3> -> 4321333704;
+4321333448:<f3> -> 4321333512;
+}

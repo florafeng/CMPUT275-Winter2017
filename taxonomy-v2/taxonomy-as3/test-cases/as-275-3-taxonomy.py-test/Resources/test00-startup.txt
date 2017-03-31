@@ -1,0 +1,1 @@
+['D', 'Does it have 4 legs?', ['D', 'Can you ride it?', ['I', 'horse'], ['D', 'Does it bark?', ['I', 'dog'], ['D', 'Does it live in your house?', ['I', 'cat'], ['I', 'cheetah']]]], ['D', 'Does it have hands?', ['I', 'monkey'], ['I', 'bird']]]

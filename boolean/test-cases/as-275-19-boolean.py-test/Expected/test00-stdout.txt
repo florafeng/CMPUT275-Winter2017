@@ -1,0 +1,17 @@
+?Result: True
+?Result: True
+?Result: False
+?Result: False
+?Errors:
+Expression has a variable 'x' in it
+Result: None
+?Result: False
+?Result: True
+?Result: False
+?Result: False
+?Result: True
+?Result: True
+?Errors:
+Expression has a variable 'x' in it
+Result: None
+?Done

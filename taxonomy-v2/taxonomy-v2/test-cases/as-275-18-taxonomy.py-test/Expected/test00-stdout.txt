@@ -1,0 +1,15 @@
+Continue identification? [y|n]
+Identify your thing
+Does it have 4 legs? [y|n]
+Can you ride it? [y|n]
+Is it a horse? [y|n]
+horse Identified!
+Continue identification? [y|n]
+Identify your thing
+Does it have 4 legs? [y|n]
+Can you ride it? [y|n]
+Does it bark? [y|n]
+Does it live in your house? [y|n]
+Is it a cat? [y|n]
+cat Identified!
+Continue identification? [y|n]

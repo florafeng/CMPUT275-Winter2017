@@ -1,0 +1,28 @@
+digraph structure {
+ordering=out;
+node [height=.1];
+rankdir=TB;
+3069864524 [shape=record, height=.1, label="{ \<class 'valuetree.ValueTree'\> | { <f0> '_children'\n* | <f1> '_value'\n'apply' }   }"];
+3069863308 [shape=record, height=.1, label="{ \<class 'list'\> | { <f0> 0\n* | <f1> 1\n* | <f2> 2\n* } }"];
+3069864140 [shape=record, height=.1, label="{ \<class 'valuetree.ValueTree'\> | { <f0> '_children'\n* | <f1> '_value'\n'-' }   }"];
+3069863340 [shape=record, height=.1, label="{ \<class 'list'\> | {  } }"];
+3069864076 [shape=record, height=.1, label="{ \<class 'valuetree.ValueTree'\> | { <f0> '_children'\n* | <f1> '_value'\n'const' }   }"];
+3069863532 [shape=record, height=.1, label="{ \<class 'list'\> | { <f0> 0\n* } }"];
+3069864012 [shape=record, height=.1, label="{ \<class 'valuetree.ValueTree'\> | { <f0> '_children'\n* | <f1> '_value'\n1 }   }"];
+3069863564 [shape=record, height=.1, label="{ \<class 'list'\> | {  } }"];
+3069864396 [shape=record, height=.1, label="{ \<class 'valuetree.ValueTree'\> | { <f0> '_children'\n* | <f1> '_value'\n'const' }   }"];
+3069863500 [shape=record, height=.1, label="{ \<class 'list'\> | { <f0> 0\n* } }"];
+3069863852 [shape=record, height=.1, label="{ \<class 'valuetree.ValueTree'\> | { <f0> '_children'\n* | <f1> '_value'\n2 }   }"];
+3069863596 [shape=record, height=.1, label="{ \<class 'list'\> | {  } }"];
+3069864524:<f0> -> 3069863308;
+3069863308:<f0> -> 3069864140;
+3069864140:<f0> -> 3069863340;
+3069863308:<f1> -> 3069864076;
+3069864076:<f0> -> 3069863532;
+3069863532:<f0> -> 3069864012;
+3069864012:<f0> -> 3069863564;
+3069863308:<f2> -> 3069864396;
+3069864396:<f0> -> 3069863500;
+3069863500:<f0> -> 3069863852;
+3069863852:<f0> -> 3069863596;
+}

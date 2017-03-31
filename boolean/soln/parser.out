@@ -1,0 +1,746 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> expression_false
+Rule 2     expression -> expression_true
+Rule 3     expression_true -> TRUE
+Rule 4     expression_true -> expression_true AND expression_true
+Rule 5     expression_true -> expression_true OR expression_true
+Rule 6     expression_true -> expression_true OR expression_false
+Rule 7     expression_true -> expression_false OR expression_true
+Rule 8     expression_true -> NOT expression_false
+Rule 9     expression_true -> LPAREN expression_true RPAREN
+Rule 10    expression_false -> FALSE
+Rule 11    expression_false -> NOT expression_true
+Rule 12    expression_false -> expression_false AND expression_false
+Rule 13    expression_false -> expression_true AND expression_false
+Rule 14    expression_false -> expression_false AND expression_true
+Rule 15    expression_false -> expression_false OR expression_false
+Rule 16    expression_false -> LPAREN expression_false RPAREN
+Rule 17    expression -> ID
+
+Terminals, with rules where they appear
+
+AND                  : 4 12 13 14
+FALSE                : 10
+ID                   : 17
+LPAREN               : 9 16
+NOT                  : 8 11
+OR                   : 5 6 7 15
+RPAREN               : 9 16
+TRUE                 : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 0
+expression_false     : 1 6 7 8 12 12 13 14 15 15 16
+expression_true      : 2 4 4 5 5 6 7 9 11 13 14
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . expression_false
+    (2) expression -> . expression_true
+    (17) expression -> . ID
+    (10) expression_false -> . FALSE
+    (11) expression_false -> . NOT expression_true
+    (12) expression_false -> . expression_false AND expression_false
+    (13) expression_false -> . expression_true AND expression_false
+    (14) expression_false -> . expression_false AND expression_true
+    (15) expression_false -> . expression_false OR expression_false
+    (16) expression_false -> . LPAREN expression_false RPAREN
+    (3) expression_true -> . TRUE
+    (4) expression_true -> . expression_true AND expression_true
+    (5) expression_true -> . expression_true OR expression_true
+    (6) expression_true -> . expression_true OR expression_false
+    (7) expression_true -> . expression_false OR expression_true
+    (8) expression_true -> . NOT expression_false
+    (9) expression_true -> . LPAREN expression_true RPAREN
+
+    ID              shift and go to state 1
+    FALSE           shift and go to state 2
+    NOT             shift and go to state 4
+    LPAREN          shift and go to state 3
+    TRUE            shift and go to state 5
+
+    expression_true                shift and go to state 6
+    expression_false               shift and go to state 7
+    expression                     shift and go to state 8
+
+state 1
+
+    (17) expression -> ID .
+
+    $end            reduce using rule 17 (expression -> ID .)
+
+
+state 2
+
+    (10) expression_false -> FALSE .
+
+    AND             reduce using rule 10 (expression_false -> FALSE .)
+    OR              reduce using rule 10 (expression_false -> FALSE .)
+    $end            reduce using rule 10 (expression_false -> FALSE .)
+    RPAREN          reduce using rule 10 (expression_false -> FALSE .)
+
+
+state 3
+
+    (16) expression_false -> LPAREN . expression_false RPAREN
+    (9) expression_true -> LPAREN . expression_true RPAREN
+    (10) expression_false -> . FALSE
+    (11) expression_false -> . NOT expression_true
+    (12) expression_false -> . expression_false AND expression_false
+    (13) expression_false -> . expression_true AND expression_false
+    (14) expression_false -> . expression_false AND expression_true
+    (15) expression_false -> . expression_false OR expression_false
+    (16) expression_false -> . LPAREN expression_false RPAREN
+    (3) expression_true -> . TRUE
+    (4) expression_true -> . expression_true AND expression_true
+    (5) expression_true -> . expression_true OR expression_true
+    (6) expression_true -> . expression_true OR expression_false
+    (7) expression_true -> . expression_false OR expression_true
+    (8) expression_true -> . NOT expression_false
+    (9) expression_true -> . LPAREN expression_true RPAREN
+
+    FALSE           shift and go to state 2
+    NOT             shift and go to state 4
+    LPAREN          shift and go to state 3
+    TRUE            shift and go to state 5
+
+    expression_true                shift and go to state 9
+    expression_false               shift and go to state 10
+
+state 4
+
+    (11) expression_false -> NOT . expression_true
+    (8) expression_true -> NOT . expression_false
+    (3) expression_true -> . TRUE
+    (4) expression_true -> . expression_true AND expression_true
+    (5) expression_true -> . expression_true OR expression_true
+    (6) expression_true -> . expression_true OR expression_false
+    (7) expression_true -> . expression_false OR expression_true
+    (8) expression_true -> . NOT expression_false
+    (9) expression_true -> . LPAREN expression_true RPAREN
+    (10) expression_false -> . FALSE
+    (11) expression_false -> . NOT expression_true
+    (12) expression_false -> . expression_false AND expression_false
+    (13) expression_false -> . expression_true AND expression_false
+    (14) expression_false -> . expression_false AND expression_true
+    (15) expression_false -> . expression_false OR expression_false
+    (16) expression_false -> . LPAREN expression_false RPAREN
+
+    TRUE            shift and go to state 5
+    NOT             shift and go to state 11
+    LPAREN          shift and go to state 12
+    FALSE           shift and go to state 2
+
+    expression_true                shift and go to state 13
+    expression_false               shift and go to state 14
+
+state 5
+
+    (3) expression_true -> TRUE .
+
+    AND             reduce using rule 3 (expression_true -> TRUE .)
+    OR              reduce using rule 3 (expression_true -> TRUE .)
+    $end            reduce using rule 3 (expression_true -> TRUE .)
+    RPAREN          reduce using rule 3 (expression_true -> TRUE .)
+
+
+state 6
+
+    (2) expression -> expression_true .
+    (13) expression_false -> expression_true . AND expression_false
+    (4) expression_true -> expression_true . AND expression_true
+    (5) expression_true -> expression_true . OR expression_true
+    (6) expression_true -> expression_true . OR expression_false
+
+    $end            reduce using rule 2 (expression -> expression_true .)
+    AND             shift and go to state 16
+    OR              shift and go to state 15
+
+
+state 7
+
+    (1) expression -> expression_false .
+    (12) expression_false -> expression_false . AND expression_false
+    (14) expression_false -> expression_false . AND expression_true
+    (15) expression_false -> expression_false . OR expression_false
+    (7) expression_true -> expression_false . OR expression_true
+
+    $end            reduce using rule 1 (expression -> expression_false .)
+    AND             shift and go to state 17
+    OR              shift and go to state 18
+
+
+state 8
+
+    (0) S' -> expression .
+
+
+
+state 9
+
+    (9) expression_true -> LPAREN expression_true . RPAREN
+    (13) expression_false -> expression_true . AND expression_false
+    (4) expression_true -> expression_true . AND expression_true
+    (5) expression_true -> expression_true . OR expression_true
+    (6) expression_true -> expression_true . OR expression_false
+
+    RPAREN          shift and go to state 19
+    AND             shift and go to state 16
+    OR              shift and go to state 15
+
+
+state 10
+
+    (16) expression_false -> LPAREN expression_false . RPAREN
+    (12) expression_false -> expression_false . AND expression_false
+    (14) expression_false -> expression_false . AND expression_true
+    (15) expression_false -> expression_false . OR expression_false
+    (7) expression_true -> expression_false . OR expression_true
+
+    RPAREN          shift and go to state 20
+    AND             shift and go to state 17
+    OR              shift and go to state 18
+
+
+state 11
+
+    (8) expression_true -> NOT . expression_false
+    (11) expression_false -> NOT . expression_true
+    (10) expression_false -> . FALSE
+    (11) expression_false -> . NOT expression_true
+    (12) expression_false -> . expression_false AND expression_false
+    (13) expression_false -> . expression_true AND expression_false
+    (14) expression_false -> . expression_false AND expression_true
+    (15) expression_false -> . expression_false OR expression_false
+    (16) expression_false -> . LPAREN expression_false RPAREN
+    (3) expression_true -> . TRUE
+    (4) expression_true -> . expression_true AND expression_true
+    (5) expression_true -> . expression_true OR expression_true
+    (6) expression_true -> . expression_true OR expression_false
+    (7) expression_true -> . expression_false OR expression_true
+    (8) expression_true -> . NOT expression_false
+    (9) expression_true -> . LPAREN expression_true RPAREN
+
+    FALSE           shift and go to state 2
+    NOT             shift and go to state 4
+    LPAREN          shift and go to state 3
+    TRUE            shift and go to state 5
+
+    expression_true                shift and go to state 21
+    expression_false               shift and go to state 22
+
+state 12
+
+    (9) expression_true -> LPAREN . expression_true RPAREN
+    (16) expression_false -> LPAREN . expression_false RPAREN
+    (3) expression_true -> . TRUE
+    (4) expression_true -> . expression_true AND expression_true
+    (5) expression_true -> . expression_true OR expression_true
+    (6) expression_true -> . expression_true OR expression_false
+    (7) expression_true -> . expression_false OR expression_true
+    (8) expression_true -> . NOT expression_false
+    (9) expression_true -> . LPAREN expression_true RPAREN
+    (10) expression_false -> . FALSE
+    (11) expression_false -> . NOT expression_true
+    (12) expression_false -> . expression_false AND expression_false
+    (13) expression_false -> . expression_true AND expression_false
+    (14) expression_false -> . expression_false AND expression_true
+    (15) expression_false -> . expression_false OR expression_false
+    (16) expression_false -> . LPAREN expression_false RPAREN
+
+    TRUE            shift and go to state 5
+    NOT             shift and go to state 11
+    LPAREN          shift and go to state 12
+    FALSE           shift and go to state 2
+
+    expression_true                shift and go to state 23
+    expression_false               shift and go to state 24
+
+state 13
+
+    (11) expression_false -> NOT expression_true .
+    (4) expression_true -> expression_true . AND expression_true
+    (5) expression_true -> expression_true . OR expression_true
+    (6) expression_true -> expression_true . OR expression_false
+    (13) expression_false -> expression_true . AND expression_false
+
+    AND             reduce using rule 11 (expression_false -> NOT expression_true .)
+    OR              reduce using rule 11 (expression_false -> NOT expression_true .)
+    $end            reduce using rule 11 (expression_false -> NOT expression_true .)
+    RPAREN          reduce using rule 11 (expression_false -> NOT expression_true .)
+
+  ! AND             [ shift and go to state 25 ]
+  ! OR              [ shift and go to state 15 ]
+
+
+state 14
+
+    (8) expression_true -> NOT expression_false .
+    (7) expression_true -> expression_false . OR expression_true
+    (12) expression_false -> expression_false . AND expression_false
+    (14) expression_false -> expression_false . AND expression_true
+    (15) expression_false -> expression_false . OR expression_false
+
+    AND             reduce using rule 8 (expression_true -> NOT expression_false .)
+    OR              reduce using rule 8 (expression_true -> NOT expression_false .)
+    $end            reduce using rule 8 (expression_true -> NOT expression_false .)
+    RPAREN          reduce using rule 8 (expression_true -> NOT expression_false .)
+
+  ! OR              [ shift and go to state 26 ]
+  ! AND             [ shift and go to state 17 ]
+
+
+state 15
+
+    (5) expression_true -> expression_true OR . expression_true
+    (6) expression_true -> expression_true OR . expression_false
+    (3) expression_true -> . TRUE
+    (4) expression_true -> . expression_true AND expression_true
+    (5) expression_true -> . expression_true OR expression_true
+    (6) expression_true -> . expression_true OR expression_false
+    (7) expression_true -> . expression_false OR expression_true
+    (8) expression_true -> . NOT expression_false
+    (9) expression_true -> . LPAREN expression_true RPAREN
+    (10) expression_false -> . FALSE
+    (11) expression_false -> . NOT expression_true
+    (12) expression_false -> . expression_false AND expression_false
+    (13) expression_false -> . expression_true AND expression_false
+    (14) expression_false -> . expression_false AND expression_true
+    (15) expression_false -> . expression_false OR expression_false
+    (16) expression_false -> . LPAREN expression_false RPAREN
+
+    TRUE            shift and go to state 5
+    NOT             shift and go to state 11
+    LPAREN          shift and go to state 12
+    FALSE           shift and go to state 2
+
+    expression_true                shift and go to state 27
+    expression_false               shift and go to state 28
+
+state 16
+
+    (13) expression_false -> expression_true AND . expression_false
+    (4) expression_true -> expression_true AND . expression_true
+    (10) expression_false -> . FALSE
+    (11) expression_false -> . NOT expression_true
+    (12) expression_false -> . expression_false AND expression_false
+    (13) expression_false -> . expression_true AND expression_false
+    (14) expression_false -> . expression_false AND expression_true
+    (15) expression_false -> . expression_false OR expression_false
+    (16) expression_false -> . LPAREN expression_false RPAREN
+    (3) expression_true -> . TRUE
+    (4) expression_true -> . expression_true AND expression_true
+    (5) expression_true -> . expression_true OR expression_true
+    (6) expression_true -> . expression_true OR expression_false
+    (7) expression_true -> . expression_false OR expression_true
+    (8) expression_true -> . NOT expression_false
+    (9) expression_true -> . LPAREN expression_true RPAREN
+
+    FALSE           shift and go to state 2
+    NOT             shift and go to state 4
+    LPAREN          shift and go to state 3
+    TRUE            shift and go to state 5
+
+    expression_true                shift and go to state 29
+    expression_false               shift and go to state 30
+
+state 17
+
+    (12) expression_false -> expression_false AND . expression_false
+    (14) expression_false -> expression_false AND . expression_true
+    (10) expression_false -> . FALSE
+    (11) expression_false -> . NOT expression_true
+    (12) expression_false -> . expression_false AND expression_false
+    (13) expression_false -> . expression_true AND expression_false
+    (14) expression_false -> . expression_false AND expression_true
+    (15) expression_false -> . expression_false OR expression_false
+    (16) expression_false -> . LPAREN expression_false RPAREN
+    (3) expression_true -> . TRUE
+    (4) expression_true -> . expression_true AND expression_true
+    (5) expression_true -> . expression_true OR expression_true
+    (6) expression_true -> . expression_true OR expression_false
+    (7) expression_true -> . expression_false OR expression_true
+    (8) expression_true -> . NOT expression_false
+    (9) expression_true -> . LPAREN expression_true RPAREN
+
+    FALSE           shift and go to state 2
+    NOT             shift and go to state 4
+    LPAREN          shift and go to state 3
+    TRUE            shift and go to state 5
+
+    expression_true                shift and go to state 31
+    expression_false               shift and go to state 32
+
+state 18
+
+    (15) expression_false -> expression_false OR . expression_false
+    (7) expression_true -> expression_false OR . expression_true
+    (10) expression_false -> . FALSE
+    (11) expression_false -> . NOT expression_true
+    (12) expression_false -> . expression_false AND expression_false
+    (13) expression_false -> . expression_true AND expression_false
+    (14) expression_false -> . expression_false AND expression_true
+    (15) expression_false -> . expression_false OR expression_false
+    (16) expression_false -> . LPAREN expression_false RPAREN
+    (3) expression_true -> . TRUE
+    (4) expression_true -> . expression_true AND expression_true
+    (5) expression_true -> . expression_true OR expression_true
+    (6) expression_true -> . expression_true OR expression_false
+    (7) expression_true -> . expression_false OR expression_true
+    (8) expression_true -> . NOT expression_false
+    (9) expression_true -> . LPAREN expression_true RPAREN
+
+    FALSE           shift and go to state 2
+    NOT             shift and go to state 4
+    LPAREN          shift and go to state 3
+    TRUE            shift and go to state 5
+
+    expression_true                shift and go to state 33
+    expression_false               shift and go to state 34
+
+state 19
+
+    (9) expression_true -> LPAREN expression_true RPAREN .
+
+    AND             reduce using rule 9 (expression_true -> LPAREN expression_true RPAREN .)
+    OR              reduce using rule 9 (expression_true -> LPAREN expression_true RPAREN .)
+    $end            reduce using rule 9 (expression_true -> LPAREN expression_true RPAREN .)
+    RPAREN          reduce using rule 9 (expression_true -> LPAREN expression_true RPAREN .)
+
+
+state 20
+
+    (16) expression_false -> LPAREN expression_false RPAREN .
+
+    AND             reduce using rule 16 (expression_false -> LPAREN expression_false RPAREN .)
+    OR              reduce using rule 16 (expression_false -> LPAREN expression_false RPAREN .)
+    $end            reduce using rule 16 (expression_false -> LPAREN expression_false RPAREN .)
+    RPAREN          reduce using rule 16 (expression_false -> LPAREN expression_false RPAREN .)
+
+
+state 21
+
+    (11) expression_false -> NOT expression_true .
+    (13) expression_false -> expression_true . AND expression_false
+    (4) expression_true -> expression_true . AND expression_true
+    (5) expression_true -> expression_true . OR expression_true
+    (6) expression_true -> expression_true . OR expression_false
+
+    AND             reduce using rule 11 (expression_false -> NOT expression_true .)
+    OR              reduce using rule 11 (expression_false -> NOT expression_true .)
+    $end            reduce using rule 11 (expression_false -> NOT expression_true .)
+    RPAREN          reduce using rule 11 (expression_false -> NOT expression_true .)
+
+  ! AND             [ shift and go to state 16 ]
+  ! OR              [ shift and go to state 15 ]
+
+
+state 22
+
+    (8) expression_true -> NOT expression_false .
+    (12) expression_false -> expression_false . AND expression_false
+    (14) expression_false -> expression_false . AND expression_true
+    (15) expression_false -> expression_false . OR expression_false
+    (7) expression_true -> expression_false . OR expression_true
+
+    AND             reduce using rule 8 (expression_true -> NOT expression_false .)
+    OR              reduce using rule 8 (expression_true -> NOT expression_false .)
+    $end            reduce using rule 8 (expression_true -> NOT expression_false .)
+    RPAREN          reduce using rule 8 (expression_true -> NOT expression_false .)
+
+  ! AND             [ shift and go to state 17 ]
+  ! OR              [ shift and go to state 18 ]
+
+
+state 23
+
+    (9) expression_true -> LPAREN expression_true . RPAREN
+    (4) expression_true -> expression_true . AND expression_true
+    (5) expression_true -> expression_true . OR expression_true
+    (6) expression_true -> expression_true . OR expression_false
+    (13) expression_false -> expression_true . AND expression_false
+
+    RPAREN          shift and go to state 19
+    AND             shift and go to state 25
+    OR              shift and go to state 15
+
+
+state 24
+
+    (16) expression_false -> LPAREN expression_false . RPAREN
+    (7) expression_true -> expression_false . OR expression_true
+    (12) expression_false -> expression_false . AND expression_false
+    (14) expression_false -> expression_false . AND expression_true
+    (15) expression_false -> expression_false . OR expression_false
+
+    RPAREN          shift and go to state 20
+    OR              shift and go to state 26
+    AND             shift and go to state 17
+
+
+state 25
+
+    (4) expression_true -> expression_true AND . expression_true
+    (13) expression_false -> expression_true AND . expression_false
+    (3) expression_true -> . TRUE
+    (4) expression_true -> . expression_true AND expression_true
+    (5) expression_true -> . expression_true OR expression_true
+    (6) expression_true -> . expression_true OR expression_false
+    (7) expression_true -> . expression_false OR expression_true
+    (8) expression_true -> . NOT expression_false
+    (9) expression_true -> . LPAREN expression_true RPAREN
+    (10) expression_false -> . FALSE
+    (11) expression_false -> . NOT expression_true
+    (12) expression_false -> . expression_false AND expression_false
+    (13) expression_false -> . expression_true AND expression_false
+    (14) expression_false -> . expression_false AND expression_true
+    (15) expression_false -> . expression_false OR expression_false
+    (16) expression_false -> . LPAREN expression_false RPAREN
+
+    TRUE            shift and go to state 5
+    NOT             shift and go to state 11
+    LPAREN          shift and go to state 12
+    FALSE           shift and go to state 2
+
+    expression_true                shift and go to state 35
+    expression_false               shift and go to state 36
+
+state 26
+
+    (7) expression_true -> expression_false OR . expression_true
+    (15) expression_false -> expression_false OR . expression_false
+    (3) expression_true -> . TRUE
+    (4) expression_true -> . expression_true AND expression_true
+    (5) expression_true -> . expression_true OR expression_true
+    (6) expression_true -> . expression_true OR expression_false
+    (7) expression_true -> . expression_false OR expression_true
+    (8) expression_true -> . NOT expression_false
+    (9) expression_true -> . LPAREN expression_true RPAREN
+    (10) expression_false -> . FALSE
+    (11) expression_false -> . NOT expression_true
+    (12) expression_false -> . expression_false AND expression_false
+    (13) expression_false -> . expression_true AND expression_false
+    (14) expression_false -> . expression_false AND expression_true
+    (15) expression_false -> . expression_false OR expression_false
+    (16) expression_false -> . LPAREN expression_false RPAREN
+
+    TRUE            shift and go to state 5
+    NOT             shift and go to state 11
+    LPAREN          shift and go to state 12
+    FALSE           shift and go to state 2
+
+    expression_true                shift and go to state 37
+    expression_false               shift and go to state 38
+
+state 27
+
+    (5) expression_true -> expression_true OR expression_true .
+    (4) expression_true -> expression_true . AND expression_true
+    (5) expression_true -> expression_true . OR expression_true
+    (6) expression_true -> expression_true . OR expression_false
+    (13) expression_false -> expression_true . AND expression_false
+
+    OR              reduce using rule 5 (expression_true -> expression_true OR expression_true .)
+    $end            reduce using rule 5 (expression_true -> expression_true OR expression_true .)
+    RPAREN          reduce using rule 5 (expression_true -> expression_true OR expression_true .)
+    AND             shift and go to state 25
+
+  ! AND             [ reduce using rule 5 (expression_true -> expression_true OR expression_true .) ]
+  ! OR              [ shift and go to state 15 ]
+
+
+state 28
+
+    (6) expression_true -> expression_true OR expression_false .
+    (7) expression_true -> expression_false . OR expression_true
+    (12) expression_false -> expression_false . AND expression_false
+    (14) expression_false -> expression_false . AND expression_true
+    (15) expression_false -> expression_false . OR expression_false
+
+    OR              reduce using rule 6 (expression_true -> expression_true OR expression_false .)
+    $end            reduce using rule 6 (expression_true -> expression_true OR expression_false .)
+    RPAREN          reduce using rule 6 (expression_true -> expression_true OR expression_false .)
+    AND             shift and go to state 17
+
+  ! AND             [ reduce using rule 6 (expression_true -> expression_true OR expression_false .) ]
+  ! OR              [ shift and go to state 26 ]
+
+
+state 29
+
+    (4) expression_true -> expression_true AND expression_true .
+    (13) expression_false -> expression_true . AND expression_false
+    (4) expression_true -> expression_true . AND expression_true
+    (5) expression_true -> expression_true . OR expression_true
+    (6) expression_true -> expression_true . OR expression_false
+
+    AND             reduce using rule 4 (expression_true -> expression_true AND expression_true .)
+    OR              reduce using rule 4 (expression_true -> expression_true AND expression_true .)
+    $end            reduce using rule 4 (expression_true -> expression_true AND expression_true .)
+    RPAREN          reduce using rule 4 (expression_true -> expression_true AND expression_true .)
+
+  ! AND             [ shift and go to state 16 ]
+  ! OR              [ shift and go to state 15 ]
+
+
+state 30
+
+    (13) expression_false -> expression_true AND expression_false .
+    (12) expression_false -> expression_false . AND expression_false
+    (14) expression_false -> expression_false . AND expression_true
+    (15) expression_false -> expression_false . OR expression_false
+    (7) expression_true -> expression_false . OR expression_true
+
+    AND             reduce using rule 13 (expression_false -> expression_true AND expression_false .)
+    OR              reduce using rule 13 (expression_false -> expression_true AND expression_false .)
+    $end            reduce using rule 13 (expression_false -> expression_true AND expression_false .)
+    RPAREN          reduce using rule 13 (expression_false -> expression_true AND expression_false .)
+
+  ! AND             [ shift and go to state 17 ]
+  ! OR              [ shift and go to state 18 ]
+
+
+state 31
+
+    (14) expression_false -> expression_false AND expression_true .
+    (13) expression_false -> expression_true . AND expression_false
+    (4) expression_true -> expression_true . AND expression_true
+    (5) expression_true -> expression_true . OR expression_true
+    (6) expression_true -> expression_true . OR expression_false
+
+    AND             reduce using rule 14 (expression_false -> expression_false AND expression_true .)
+    OR              reduce using rule 14 (expression_false -> expression_false AND expression_true .)
+    $end            reduce using rule 14 (expression_false -> expression_false AND expression_true .)
+    RPAREN          reduce using rule 14 (expression_false -> expression_false AND expression_true .)
+
+  ! AND             [ shift and go to state 16 ]
+  ! OR              [ shift and go to state 15 ]
+
+
+state 32
+
+    (12) expression_false -> expression_false AND expression_false .
+    (12) expression_false -> expression_false . AND expression_false
+    (14) expression_false -> expression_false . AND expression_true
+    (15) expression_false -> expression_false . OR expression_false
+    (7) expression_true -> expression_false . OR expression_true
+
+    AND             reduce using rule 12 (expression_false -> expression_false AND expression_false .)
+    OR              reduce using rule 12 (expression_false -> expression_false AND expression_false .)
+    $end            reduce using rule 12 (expression_false -> expression_false AND expression_false .)
+    RPAREN          reduce using rule 12 (expression_false -> expression_false AND expression_false .)
+
+  ! AND             [ shift and go to state 17 ]
+  ! OR              [ shift and go to state 18 ]
+
+
+state 33
+
+    (7) expression_true -> expression_false OR expression_true .
+    (13) expression_false -> expression_true . AND expression_false
+    (4) expression_true -> expression_true . AND expression_true
+    (5) expression_true -> expression_true . OR expression_true
+    (6) expression_true -> expression_true . OR expression_false
+
+    OR              reduce using rule 7 (expression_true -> expression_false OR expression_true .)
+    $end            reduce using rule 7 (expression_true -> expression_false OR expression_true .)
+    RPAREN          reduce using rule 7 (expression_true -> expression_false OR expression_true .)
+    AND             shift and go to state 16
+
+  ! AND             [ reduce using rule 7 (expression_true -> expression_false OR expression_true .) ]
+  ! OR              [ shift and go to state 15 ]
+
+
+state 34
+
+    (15) expression_false -> expression_false OR expression_false .
+    (12) expression_false -> expression_false . AND expression_false
+    (14) expression_false -> expression_false . AND expression_true
+    (15) expression_false -> expression_false . OR expression_false
+    (7) expression_true -> expression_false . OR expression_true
+
+    OR              reduce using rule 15 (expression_false -> expression_false OR expression_false .)
+    $end            reduce using rule 15 (expression_false -> expression_false OR expression_false .)
+    RPAREN          reduce using rule 15 (expression_false -> expression_false OR expression_false .)
+    AND             shift and go to state 17
+
+  ! AND             [ reduce using rule 15 (expression_false -> expression_false OR expression_false .) ]
+  ! OR              [ shift and go to state 18 ]
+
+
+state 35
+
+    (4) expression_true -> expression_true AND expression_true .
+    (4) expression_true -> expression_true . AND expression_true
+    (5) expression_true -> expression_true . OR expression_true
+    (6) expression_true -> expression_true . OR expression_false
+    (13) expression_false -> expression_true . AND expression_false
+
+    AND             reduce using rule 4 (expression_true -> expression_true AND expression_true .)
+    OR              reduce using rule 4 (expression_true -> expression_true AND expression_true .)
+    $end            reduce using rule 4 (expression_true -> expression_true AND expression_true .)
+    RPAREN          reduce using rule 4 (expression_true -> expression_true AND expression_true .)
+
+  ! AND             [ shift and go to state 25 ]
+  ! OR              [ shift and go to state 15 ]
+
+
+state 36
+
+    (13) expression_false -> expression_true AND expression_false .
+    (7) expression_true -> expression_false . OR expression_true
+    (12) expression_false -> expression_false . AND expression_false
+    (14) expression_false -> expression_false . AND expression_true
+    (15) expression_false -> expression_false . OR expression_false
+
+    AND             reduce using rule 13 (expression_false -> expression_true AND expression_false .)
+    OR              reduce using rule 13 (expression_false -> expression_true AND expression_false .)
+    $end            reduce using rule 13 (expression_false -> expression_true AND expression_false .)
+    RPAREN          reduce using rule 13 (expression_false -> expression_true AND expression_false .)
+
+  ! OR              [ shift and go to state 26 ]
+  ! AND             [ shift and go to state 17 ]
+
+
+state 37
+
+    (7) expression_true -> expression_false OR expression_true .
+    (4) expression_true -> expression_true . AND expression_true
+    (5) expression_true -> expression_true . OR expression_true
+    (6) expression_true -> expression_true . OR expression_false
+    (13) expression_false -> expression_true . AND expression_false
+
+    OR              reduce using rule 7 (expression_true -> expression_false OR expression_true .)
+    $end            reduce using rule 7 (expression_true -> expression_false OR expression_true .)
+    RPAREN          reduce using rule 7 (expression_true -> expression_false OR expression_true .)
+    AND             shift and go to state 25
+
+  ! AND             [ reduce using rule 7 (expression_true -> expression_false OR expression_true .) ]
+  ! OR              [ shift and go to state 15 ]
+
+
+state 38
+
+    (15) expression_false -> expression_false OR expression_false .
+    (7) expression_true -> expression_false . OR expression_true
+    (12) expression_false -> expression_false . AND expression_false
+    (14) expression_false -> expression_false . AND expression_true
+    (15) expression_false -> expression_false . OR expression_false
+
+    OR              reduce using rule 15 (expression_false -> expression_false OR expression_false .)
+    $end            reduce using rule 15 (expression_false -> expression_false OR expression_false .)
+    RPAREN          reduce using rule 15 (expression_false -> expression_false OR expression_false .)
+    AND             shift and go to state 17
+
+  ! AND             [ reduce using rule 15 (expression_false -> expression_false OR expression_false .) ]
+  ! OR              [ shift and go to state 26 ]
+

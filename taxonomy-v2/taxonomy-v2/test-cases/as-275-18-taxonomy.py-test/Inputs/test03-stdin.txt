@@ -1,0 +1,5 @@
+y
+horse
+y
+bird
+n

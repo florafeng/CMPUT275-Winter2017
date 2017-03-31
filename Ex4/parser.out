@@ -1,0 +1,561 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> expression
+Rule 2     statement -> <empty>
+Rule 3     expression -> NAME = expression
+Rule 4     expression -> expression + expression
+Rule 5     expression -> expression - expression
+Rule 6     expression -> expression * expression
+Rule 7     expression -> expression / expression
+Rule 8     expression -> - expression
+Rule 9     expression -> NAME LPAREN RPAREN
+Rule 10    expression -> NAME LPAREN expr_list RPAREN
+Rule 11    expression -> LPAREN expression RPAREN
+Rule 12    expr_list -> expression
+Rule 13    expr_list -> expr_list COMMA expression
+Rule 14    expression -> NUMBER
+Rule 15    expression -> NAME
+
+Terminals, with rules where they appear
+
+*                    : 6
++                    : 4
+-                    : 5 8
+/                    : 7
+=                    : 3
+COMMA                : 13
+LPAREN               : 9 10 11
+NAME                 : 3 9 10 15
+NUMBER               : 14
+RPAREN               : 9 10 11
+error                : 
+
+Nonterminals, with rules where they appear
+
+expr_list            : 10 13
+expression           : 1 3 4 4 5 5 6 6 7 7 8 11 12 13
+statement            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . expression
+    (2) statement -> .
+    (3) expression -> . NAME = expression
+    (4) expression -> . expression + expression
+    (5) expression -> . expression - expression
+    (6) expression -> . expression * expression
+    (7) expression -> . expression / expression
+    (8) expression -> . - expression
+    (9) expression -> . NAME LPAREN RPAREN
+    (10) expression -> . NAME LPAREN expr_list RPAREN
+    (11) expression -> . LPAREN expression RPAREN
+    (14) expression -> . NUMBER
+    (15) expression -> . NAME
+
+    $end            reduce using rule 2 (statement -> .)
+    NAME            shift and go to state 1
+    -               shift and go to state 5
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 2
+
+    expression                     shift and go to state 4
+    statement                      shift and go to state 6
+
+state 1
+
+    (3) expression -> NAME . = expression
+    (9) expression -> NAME . LPAREN RPAREN
+    (10) expression -> NAME . LPAREN expr_list RPAREN
+    (15) expression -> NAME .
+
+    =               shift and go to state 7
+    LPAREN          shift and go to state 8
+    +               reduce using rule 15 (expression -> NAME .)
+    -               reduce using rule 15 (expression -> NAME .)
+    *               reduce using rule 15 (expression -> NAME .)
+    /               reduce using rule 15 (expression -> NAME .)
+    RPAREN          reduce using rule 15 (expression -> NAME .)
+    COMMA           reduce using rule 15 (expression -> NAME .)
+    $end            reduce using rule 15 (expression -> NAME .)
+
+
+state 2
+
+    (14) expression -> NUMBER .
+
+    +               reduce using rule 14 (expression -> NUMBER .)
+    -               reduce using rule 14 (expression -> NUMBER .)
+    *               reduce using rule 14 (expression -> NUMBER .)
+    /               reduce using rule 14 (expression -> NUMBER .)
+    RPAREN          reduce using rule 14 (expression -> NUMBER .)
+    COMMA           reduce using rule 14 (expression -> NUMBER .)
+    $end            reduce using rule 14 (expression -> NUMBER .)
+
+
+state 3
+
+    (11) expression -> LPAREN . expression RPAREN
+    (3) expression -> . NAME = expression
+    (4) expression -> . expression + expression
+    (5) expression -> . expression - expression
+    (6) expression -> . expression * expression
+    (7) expression -> . expression / expression
+    (8) expression -> . - expression
+    (9) expression -> . NAME LPAREN RPAREN
+    (10) expression -> . NAME LPAREN expr_list RPAREN
+    (11) expression -> . LPAREN expression RPAREN
+    (14) expression -> . NUMBER
+    (15) expression -> . NAME
+
+    NAME            shift and go to state 1
+    -               shift and go to state 5
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 2
+
+    expression                     shift and go to state 9
+
+state 4
+
+    (1) statement -> expression .
+    (4) expression -> expression . + expression
+    (5) expression -> expression . - expression
+    (6) expression -> expression . * expression
+    (7) expression -> expression . / expression
+
+    $end            reduce using rule 1 (statement -> expression .)
+    +               shift and go to state 10
+    -               shift and go to state 13
+    *               shift and go to state 12
+    /               shift and go to state 11
+
+
+state 5
+
+    (8) expression -> - . expression
+    (3) expression -> . NAME = expression
+    (4) expression -> . expression + expression
+    (5) expression -> . expression - expression
+    (6) expression -> . expression * expression
+    (7) expression -> . expression / expression
+    (8) expression -> . - expression
+    (9) expression -> . NAME LPAREN RPAREN
+    (10) expression -> . NAME LPAREN expr_list RPAREN
+    (11) expression -> . LPAREN expression RPAREN
+    (14) expression -> . NUMBER
+    (15) expression -> . NAME
+
+    NAME            shift and go to state 1
+    -               shift and go to state 5
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 2
+
+    expression                     shift and go to state 14
+
+state 6
+
+    (0) S' -> statement .
+
+
+
+state 7
+
+    (3) expression -> NAME = . expression
+    (3) expression -> . NAME = expression
+    (4) expression -> . expression + expression
+    (5) expression -> . expression - expression
+    (6) expression -> . expression * expression
+    (7) expression -> . expression / expression
+    (8) expression -> . - expression
+    (9) expression -> . NAME LPAREN RPAREN
+    (10) expression -> . NAME LPAREN expr_list RPAREN
+    (11) expression -> . LPAREN expression RPAREN
+    (14) expression -> . NUMBER
+    (15) expression -> . NAME
+
+    NAME            shift and go to state 1
+    -               shift and go to state 5
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 2
+
+    expression                     shift and go to state 15
+
+state 8
+
+    (9) expression -> NAME LPAREN . RPAREN
+    (10) expression -> NAME LPAREN . expr_list RPAREN
+    (12) expr_list -> . expression
+    (13) expr_list -> . expr_list COMMA expression
+    (3) expression -> . NAME = expression
+    (4) expression -> . expression + expression
+    (5) expression -> . expression - expression
+    (6) expression -> . expression * expression
+    (7) expression -> . expression / expression
+    (8) expression -> . - expression
+    (9) expression -> . NAME LPAREN RPAREN
+    (10) expression -> . NAME LPAREN expr_list RPAREN
+    (11) expression -> . LPAREN expression RPAREN
+    (14) expression -> . NUMBER
+    (15) expression -> . NAME
+
+    RPAREN          shift and go to state 16
+    NAME            shift and go to state 1
+    -               shift and go to state 5
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 2
+
+    expression                     shift and go to state 18
+    expr_list                      shift and go to state 17
+
+state 9
+
+    (11) expression -> LPAREN expression . RPAREN
+    (4) expression -> expression . + expression
+    (5) expression -> expression . - expression
+    (6) expression -> expression . * expression
+    (7) expression -> expression . / expression
+
+    RPAREN          shift and go to state 19
+    +               shift and go to state 10
+    -               shift and go to state 13
+    *               shift and go to state 12
+    /               shift and go to state 11
+
+
+state 10
+
+    (4) expression -> expression + . expression
+    (3) expression -> . NAME = expression
+    (4) expression -> . expression + expression
+    (5) expression -> . expression - expression
+    (6) expression -> . expression * expression
+    (7) expression -> . expression / expression
+    (8) expression -> . - expression
+    (9) expression -> . NAME LPAREN RPAREN
+    (10) expression -> . NAME LPAREN expr_list RPAREN
+    (11) expression -> . LPAREN expression RPAREN
+    (14) expression -> . NUMBER
+    (15) expression -> . NAME
+
+    NAME            shift and go to state 1
+    -               shift and go to state 5
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 2
+
+    expression                     shift and go to state 20
+
+state 11
+
+    (7) expression -> expression / . expression
+    (3) expression -> . NAME = expression
+    (4) expression -> . expression + expression
+    (5) expression -> . expression - expression
+    (6) expression -> . expression * expression
+    (7) expression -> . expression / expression
+    (8) expression -> . - expression
+    (9) expression -> . NAME LPAREN RPAREN
+    (10) expression -> . NAME LPAREN expr_list RPAREN
+    (11) expression -> . LPAREN expression RPAREN
+    (14) expression -> . NUMBER
+    (15) expression -> . NAME
+
+    NAME            shift and go to state 1
+    -               shift and go to state 5
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 2
+
+    expression                     shift and go to state 21
+
+state 12
+
+    (6) expression -> expression * . expression
+    (3) expression -> . NAME = expression
+    (4) expression -> . expression + expression
+    (5) expression -> . expression - expression
+    (6) expression -> . expression * expression
+    (7) expression -> . expression / expression
+    (8) expression -> . - expression
+    (9) expression -> . NAME LPAREN RPAREN
+    (10) expression -> . NAME LPAREN expr_list RPAREN
+    (11) expression -> . LPAREN expression RPAREN
+    (14) expression -> . NUMBER
+    (15) expression -> . NAME
+
+    NAME            shift and go to state 1
+    -               shift and go to state 5
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 2
+
+    expression                     shift and go to state 22
+
+state 13
+
+    (5) expression -> expression - . expression
+    (3) expression -> . NAME = expression
+    (4) expression -> . expression + expression
+    (5) expression -> . expression - expression
+    (6) expression -> . expression * expression
+    (7) expression -> . expression / expression
+    (8) expression -> . - expression
+    (9) expression -> . NAME LPAREN RPAREN
+    (10) expression -> . NAME LPAREN expr_list RPAREN
+    (11) expression -> . LPAREN expression RPAREN
+    (14) expression -> . NUMBER
+    (15) expression -> . NAME
+
+    NAME            shift and go to state 1
+    -               shift and go to state 5
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 2
+
+    expression                     shift and go to state 23
+
+state 14
+
+    (8) expression -> - expression .
+    (4) expression -> expression . + expression
+    (5) expression -> expression . - expression
+    (6) expression -> expression . * expression
+    (7) expression -> expression . / expression
+
+    +               reduce using rule 8 (expression -> - expression .)
+    -               reduce using rule 8 (expression -> - expression .)
+    *               reduce using rule 8 (expression -> - expression .)
+    /               reduce using rule 8 (expression -> - expression .)
+    RPAREN          reduce using rule 8 (expression -> - expression .)
+    COMMA           reduce using rule 8 (expression -> - expression .)
+    $end            reduce using rule 8 (expression -> - expression .)
+
+  ! +               [ shift and go to state 10 ]
+  ! -               [ shift and go to state 13 ]
+  ! *               [ shift and go to state 12 ]
+  ! /               [ shift and go to state 11 ]
+
+
+state 15
+
+    (3) expression -> NAME = expression .
+    (4) expression -> expression . + expression
+    (5) expression -> expression . - expression
+    (6) expression -> expression . * expression
+    (7) expression -> expression . / expression
+
+  ! shift/reduce conflict for + resolved as shift
+  ! shift/reduce conflict for - resolved as shift
+  ! shift/reduce conflict for * resolved as shift
+  ! shift/reduce conflict for / resolved as shift
+    RPAREN          reduce using rule 3 (expression -> NAME = expression .)
+    COMMA           reduce using rule 3 (expression -> NAME = expression .)
+    $end            reduce using rule 3 (expression -> NAME = expression .)
+    +               shift and go to state 10
+    -               shift and go to state 13
+    *               shift and go to state 12
+    /               shift and go to state 11
+
+  ! +               [ reduce using rule 3 (expression -> NAME = expression .) ]
+  ! -               [ reduce using rule 3 (expression -> NAME = expression .) ]
+  ! *               [ reduce using rule 3 (expression -> NAME = expression .) ]
+  ! /               [ reduce using rule 3 (expression -> NAME = expression .) ]
+
+
+state 16
+
+    (9) expression -> NAME LPAREN RPAREN .
+
+    +               reduce using rule 9 (expression -> NAME LPAREN RPAREN .)
+    -               reduce using rule 9 (expression -> NAME LPAREN RPAREN .)
+    *               reduce using rule 9 (expression -> NAME LPAREN RPAREN .)
+    /               reduce using rule 9 (expression -> NAME LPAREN RPAREN .)
+    RPAREN          reduce using rule 9 (expression -> NAME LPAREN RPAREN .)
+    COMMA           reduce using rule 9 (expression -> NAME LPAREN RPAREN .)
+    $end            reduce using rule 9 (expression -> NAME LPAREN RPAREN .)
+
+
+state 17
+
+    (10) expression -> NAME LPAREN expr_list . RPAREN
+    (13) expr_list -> expr_list . COMMA expression
+
+    RPAREN          shift and go to state 24
+    COMMA           shift and go to state 25
+
+
+state 18
+
+    (12) expr_list -> expression .
+    (4) expression -> expression . + expression
+    (5) expression -> expression . - expression
+    (6) expression -> expression . * expression
+    (7) expression -> expression . / expression
+
+    RPAREN          reduce using rule 12 (expr_list -> expression .)
+    COMMA           reduce using rule 12 (expr_list -> expression .)
+    +               shift and go to state 10
+    -               shift and go to state 13
+    *               shift and go to state 12
+    /               shift and go to state 11
+
+
+state 19
+
+    (11) expression -> LPAREN expression RPAREN .
+
+    +               reduce using rule 11 (expression -> LPAREN expression RPAREN .)
+    -               reduce using rule 11 (expression -> LPAREN expression RPAREN .)
+    *               reduce using rule 11 (expression -> LPAREN expression RPAREN .)
+    /               reduce using rule 11 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 11 (expression -> LPAREN expression RPAREN .)
+    COMMA           reduce using rule 11 (expression -> LPAREN expression RPAREN .)
+    $end            reduce using rule 11 (expression -> LPAREN expression RPAREN .)
+
+
+state 20
+
+    (4) expression -> expression + expression .
+    (4) expression -> expression . + expression
+    (5) expression -> expression . - expression
+    (6) expression -> expression . * expression
+    (7) expression -> expression . / expression
+
+    +               reduce using rule 4 (expression -> expression + expression .)
+    -               reduce using rule 4 (expression -> expression + expression .)
+    RPAREN          reduce using rule 4 (expression -> expression + expression .)
+    COMMA           reduce using rule 4 (expression -> expression + expression .)
+    $end            reduce using rule 4 (expression -> expression + expression .)
+    *               shift and go to state 12
+    /               shift and go to state 11
+
+  ! *               [ reduce using rule 4 (expression -> expression + expression .) ]
+  ! /               [ reduce using rule 4 (expression -> expression + expression .) ]
+  ! +               [ shift and go to state 10 ]
+  ! -               [ shift and go to state 13 ]
+
+
+state 21
+
+    (7) expression -> expression / expression .
+    (4) expression -> expression . + expression
+    (5) expression -> expression . - expression
+    (6) expression -> expression . * expression
+    (7) expression -> expression . / expression
+
+    +               reduce using rule 7 (expression -> expression / expression .)
+    -               reduce using rule 7 (expression -> expression / expression .)
+    *               reduce using rule 7 (expression -> expression / expression .)
+    /               reduce using rule 7 (expression -> expression / expression .)
+    RPAREN          reduce using rule 7 (expression -> expression / expression .)
+    COMMA           reduce using rule 7 (expression -> expression / expression .)
+    $end            reduce using rule 7 (expression -> expression / expression .)
+
+  ! +               [ shift and go to state 10 ]
+  ! -               [ shift and go to state 13 ]
+  ! *               [ shift and go to state 12 ]
+  ! /               [ shift and go to state 11 ]
+
+
+state 22
+
+    (6) expression -> expression * expression .
+    (4) expression -> expression . + expression
+    (5) expression -> expression . - expression
+    (6) expression -> expression . * expression
+    (7) expression -> expression . / expression
+
+    +               reduce using rule 6 (expression -> expression * expression .)
+    -               reduce using rule 6 (expression -> expression * expression .)
+    *               reduce using rule 6 (expression -> expression * expression .)
+    /               reduce using rule 6 (expression -> expression * expression .)
+    RPAREN          reduce using rule 6 (expression -> expression * expression .)
+    COMMA           reduce using rule 6 (expression -> expression * expression .)
+    $end            reduce using rule 6 (expression -> expression * expression .)
+
+  ! +               [ shift and go to state 10 ]
+  ! -               [ shift and go to state 13 ]
+  ! *               [ shift and go to state 12 ]
+  ! /               [ shift and go to state 11 ]
+
+
+state 23
+
+    (5) expression -> expression - expression .
+    (4) expression -> expression . + expression
+    (5) expression -> expression . - expression
+    (6) expression -> expression . * expression
+    (7) expression -> expression . / expression
+
+    +               reduce using rule 5 (expression -> expression - expression .)
+    -               reduce using rule 5 (expression -> expression - expression .)
+    RPAREN          reduce using rule 5 (expression -> expression - expression .)
+    COMMA           reduce using rule 5 (expression -> expression - expression .)
+    $end            reduce using rule 5 (expression -> expression - expression .)
+    *               shift and go to state 12
+    /               shift and go to state 11
+
+  ! *               [ reduce using rule 5 (expression -> expression - expression .) ]
+  ! /               [ reduce using rule 5 (expression -> expression - expression .) ]
+  ! +               [ shift and go to state 10 ]
+  ! -               [ shift and go to state 13 ]
+
+
+state 24
+
+    (10) expression -> NAME LPAREN expr_list RPAREN .
+
+    +               reduce using rule 10 (expression -> NAME LPAREN expr_list RPAREN .)
+    -               reduce using rule 10 (expression -> NAME LPAREN expr_list RPAREN .)
+    *               reduce using rule 10 (expression -> NAME LPAREN expr_list RPAREN .)
+    /               reduce using rule 10 (expression -> NAME LPAREN expr_list RPAREN .)
+    RPAREN          reduce using rule 10 (expression -> NAME LPAREN expr_list RPAREN .)
+    COMMA           reduce using rule 10 (expression -> NAME LPAREN expr_list RPAREN .)
+    $end            reduce using rule 10 (expression -> NAME LPAREN expr_list RPAREN .)
+
+
+state 25
+
+    (13) expr_list -> expr_list COMMA . expression
+    (3) expression -> . NAME = expression
+    (4) expression -> . expression + expression
+    (5) expression -> . expression - expression
+    (6) expression -> . expression * expression
+    (7) expression -> . expression / expression
+    (8) expression -> . - expression
+    (9) expression -> . NAME LPAREN RPAREN
+    (10) expression -> . NAME LPAREN expr_list RPAREN
+    (11) expression -> . LPAREN expression RPAREN
+    (14) expression -> . NUMBER
+    (15) expression -> . NAME
+
+    NAME            shift and go to state 1
+    -               shift and go to state 5
+    LPAREN          shift and go to state 3
+    NUMBER          shift and go to state 2
+
+    expression                     shift and go to state 26
+
+state 26
+
+    (13) expr_list -> expr_list COMMA expression .
+    (4) expression -> expression . + expression
+    (5) expression -> expression . - expression
+    (6) expression -> expression . * expression
+    (7) expression -> expression . / expression
+
+    RPAREN          reduce using rule 13 (expr_list -> expr_list COMMA expression .)
+    COMMA           reduce using rule 13 (expr_list -> expr_list COMMA expression .)
+    +               shift and go to state 10
+    -               shift and go to state 13
+    *               shift and go to state 12
+    /               shift and go to state 11
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for + in state 15 resolved as shift
+WARNING: shift/reduce conflict for - in state 15 resolved as shift
+WARNING: shift/reduce conflict for * in state 15 resolved as shift
+WARNING: shift/reduce conflict for / in state 15 resolved as shift

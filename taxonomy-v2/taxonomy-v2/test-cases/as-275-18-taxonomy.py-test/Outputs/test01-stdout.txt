@@ -1,0 +1,33 @@
+Continue identification? [y|n]
+Identify your thing
+Does it have 4 legs? [y|n]
+Does it have hands? [y|n]
+Is it a bird? [y|n]
+I don't know what it is.
+What is it?
+Give me a question where yes means a 'snake' and no means a 'bird'
+Continue identification? [y|n]
+Identify your thing
+Does it have 4 legs? [y|n]
+Does it have hands? [y|n]
+Does it slither? [y|n]
+Is it a bird? [y|n]
+bird Identified!
+Continue identification? [y|n]
+Identify your thing
+Does it have 4 legs? [y|n]
+Does it have hands? [y|n]
+Does it slither? [y|n]
+Is it a bird? [y|n]
+I don't know what it is.
+What is it?
+Give me a question where yes means a 'fish' and no means a 'bird'
+Continue identification? [y|n]
+Identify your thing
+Does it have 4 legs? [y|n]
+Does it have hands? [y|n]
+Does it slither? [y|n]
+Does it swim? [y|n]
+Is it a fish? [y|n]
+fish Identified!
+Continue identification? [y|n]

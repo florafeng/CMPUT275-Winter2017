@@ -1,0 +1,9 @@
+Unparse: (- 1)
+Result: -1
+Unparse: (1 - 2)
+Result: -1
+Unparse: (- (- (- 1)))
+Result: -1
+Unparse: (1 - (- 2))
+Result: 3
+Done

@@ -1,0 +1,25 @@
+y
+n
+n
+n
+snake
+Does it slither?
+y
+n
+n
+n
+y
+y
+n
+n
+n
+n
+fish
+Does it swim?
+y
+n
+n
+n
+y
+y
+n
